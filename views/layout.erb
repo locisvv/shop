@@ -5,7 +5,15 @@
 	<link href="/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<h1>Layout</h1>
+	<% if session[:user] %>
+		<a href="/logout">Logout</a>
+	<% else %>
+		<a href="/login">Login</a>
+		<a href="/sign_up">Sign up</a>
+	<% end %>
+
 	<%= yield %>
+
+	<%=	session[:error] %>
 </body>	
 </html>
