@@ -16,9 +16,9 @@ shop
 
 Ruby - 1.9.3p429
 gems:
-	* sinatra
-	* data_mapper
-	* dm-sqlite-adapter
-	* thin - вроді крутий сервер 
+* sinatra
+* data_mapper
+* dm-sqlite-adapter
+* thin 
 
 http://localhost:4567/ - адрес для запуску проекту 
