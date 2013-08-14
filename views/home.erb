@@ -1,2 +1,5 @@
 <h1>Home</h1>
 <a href="/index">Index page</a>
+<%if session[:user]%>
+	<a href="/my_page">My page</a>
+<%end%>

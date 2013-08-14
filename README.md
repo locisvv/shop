@@ -22,4 +22,5 @@ gems:
 	* thin - вроді крутий сервер
 	* rack-flash3 - https://github.com/treeder/rack-flash
 
+
 http://localhost:4567/ - адрес для запуску проекту 
