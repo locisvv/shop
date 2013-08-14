@@ -16,5 +16,5 @@ class User
 			 	:is_unique => @@errors[:unique_login]
 			 }
 
-	property :password,  String, :length => (3..40), :messages => {:length => @@errors[:length_password]}
+	property :password,  String, :length => (6..40), :messages => {:length => @@errors[:length_password]}
 end
