@@ -57,5 +57,12 @@ end
 
 get '/logout' do
 	session[:user] = nil
-	flash[:error] = @@errors[:logout]
+	flash[:notice] = @@notice[:logout]
+	redirect '/'
+end
+
+get '/my_page' do
+	login_required
+
+	erb :my_page
 end
