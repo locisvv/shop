@@ -1,44 +1,36 @@
 # encoding: utf-8
 get '/sign_up' do
 	if session[:user]
-		session[:error] = @@errors[:registered]
+		flash[:error] = @@errors[:registered]
 	else
 		erb :sign_up
 	end	
 end
 
 post '/sign_up' do
-	user = params[:user]
-
-	if session[:user]
-		session[:error] = @@errors[:registered]
-		redirect back
-	elsif user[:firstname].empty? or
-		  user[:lastname].empty?  or
-		  user[:email].empty? 	  or
-		  user[:login].empty? 	  or
-		  user[:password].empty?
-
-		session[:error] = @@errors[:empty_input]
-		redirect '/sign_up'
-	end	
 	
-	found_user = User.first(:login => user[:login])
- 
-	if found_user
-		session[error] = @@errors[:sign_up]
-		redirect '/sign_up'
-	else
-		new_user = User.create(user)
-		new_user.save
+	if session[:user]
+		flash[:error] = @@errors[:registered]
+		redirect back
 	end
 
-	redirect '/'
+	user = User.create(params[:user])
+
+	if user.valid?
+		user.save
+		redirect '/'
+	else
+		flash[:error] = user.errors.collect do |k,v|
+        	"#{k} #{v}"
+      	end.join(' ')
+
+		redirect '/sign_up'
+	end
 end
 
 get '/login' do
 	if session[:user]
-		@@errors[:logged_in]
+		flash[:error] = @@errors[:logged_in]
 		redirect '/'
 	else
 		erb :login
@@ -48,7 +40,7 @@ end
 post '/login' do
 	user = params[:user]
 	if user[:login].empty? or user[:password].empty?
-		session[:error] = @@errors[:empty_input]
+		flash[:error] = @@errors[:empty_input]
 		redirect back
 	end
 
@@ -57,7 +49,7 @@ post '/login' do
 	if found_user
 		session[:user] = found_user
 	else
-		session[:error] = @@errors[:login]
+		flash[:error] = @@errors[:login]
 	end
 
 	redirect '/'
@@ -65,4 +57,5 @@ end
 
 get '/logout' do
 	session[:user] = nil
+	flash[:error] = @@errors[:logout]
 end
