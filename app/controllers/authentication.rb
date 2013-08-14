@@ -48,11 +48,11 @@ post '/login' do
 
 	if found_user
 		session[:user] = found_user
+		redirect '/'
 	else
 		flash[:error] = @@errors[:login]
+		redirect back
 	end
-
-	redirect '/'
 end
 
 get '/logout' do
