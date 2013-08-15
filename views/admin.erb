@@ -1,0 +1,60 @@
+<p>Admin</p>
+
+<table cellspacing="0">
+    <tr>
+    	<th>№</th><th>Назва</th><th>Група</th><th>Ціна</th>
+    </tr>
+
+    <% @products.each do |item| %>
+	    <tr>
+	    	<td><%= item.id %></td>
+	    	<td><%= item.name %></td>
+	    	<td><%= item.group.name %></td>
+	    	<td><%= item.price %></td>
+	    </tr>
+	<% end %>
+
+</table>
+<h2>Категорії</h2>
+<div>
+	<form method="post" action="/admin/new_group">
+		<p>
+			<label for="name">Назва</label>
+			<input id="name" type="text" name="group[name]" required>
+		</p>
+		<p>Короткий опис<br>
+			<textarea name="group[description]" cols="40" rows="3"></textarea></p>
+		</p>
+		<p id="panel">
+			<input type="submit" value="Додати групу" name="submit">
+		</p>
+	</form>
+</div>
+<h2>Продукти</h2>
+<div>
+	<form method="post" action="/admin/new_product">
+		<p>
+			<label for="name">Назва товару</label>
+			<input id="name" type="text" name="product[name]" required>
+		</p>
+
+		<% if @groups %>
+			<select name="product[group_name]">
+				<% @groups.each do |item| %>
+					<option><%= item.name %></option>
+				<% end %>	
+			</select>
+		<% end %>
+
+		<p>
+			<label for="price">Ціна</label>
+			<input id="price" type="text" name="product[price]" required>
+		</p>
+		<p>Короткий опис<br>
+			<textarea name="product[description]" cols="40" rows="3"></textarea></p>
+		</p>
+		<p id="panel">
+			<input type="submit" value="Створити" name="submit">
+		</p>
+	</form>
+</div>

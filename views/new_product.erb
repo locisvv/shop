@@ -1,0 +1,19 @@
+<div>
+	<form method="post" action="/new_product">
+		<p>
+			<label for="name">Назва товару</label>
+			<input id="name" type="text" name="product[name]" required>
+		</p>
+		<p>
+			<label for="price">Ціна</label>
+			<input id="price" type="text" name="product[price]" required>
+		</p>
+		<p>
+			<label for="description">Короткий опис</label>
+			<input id="description" type="text" name="product[description]" required>
+		</p>
+		<p id="panel">
+			<input type="submit" value="Створити" name="submit">
+		</p>
+	</form>
+</div>

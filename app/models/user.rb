@@ -17,4 +17,6 @@ class User
 			 }
 
 	property :password,  String, :length => (6..40), :messages => {:length => @@errors[:length_password]}
+	property :permission, Boolean, :default => false
+
 end

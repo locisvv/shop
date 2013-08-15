@@ -5,4 +5,11 @@ helpers  do
 			redirect '/login'
 		end	
     end
+
+    def site_admin!
+		unless session[:user].permission
+			flash[:error] = @@errors[:sign_in_admin]
+			redirect '/'
+		end		
+	end		
 end
