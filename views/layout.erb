@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="/css/body.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id ="menu">
+ <a href="/index">Головна</a>
+ <a href="/kontakt">Контакти</a>
+ <a href="/about_as">Про нас</a>
+	<% if session[:user] %>
+		<a href="/logout">Вийти</a>
+	<% else %>
+		<a href="/login">Вхід</a>
+		<a href="/sign_up">Реєстрація</a>
+	<% end %>
+</div>
+     <div class="telefon"> 
+     <a><img src="images/telefon.png"> 0(99) 0295260 </a> <a2>  Приймаємо звінки з 9:00 до 18:00 пн.-сб.
+     </img></a2>
+</div>
+
+     <div class="find">
+        <div id="korzuna"> <h1>Корзина </h1> </div>
+        </div>
+
+
+
+	<%= yield %>
+
+	<p class='error'><%= flash[:error] %></p>
+	
+</body>	
+</html>

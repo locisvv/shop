@@ -1,0 +1,28 @@
+<div id= "sign_up" >
+	<form method="post" action="/sign_up">
+		<p>
+			<label for="firstname">Ім'я</label>
+			<input id="firstname" type="text" name="user[firstname]" required>
+		</p>
+		<p>
+			<label for="lastname">Прізвище</label>
+			<input id="lastname" type="text" name="user[lastname]" required>
+		</p>
+		<p>
+			<label for="email">Email</label>
+			<input id="email" type="text" name="user[email]" required>
+		</p>
+		<p>
+			<label for="login">Login</label>
+			<input id="login" type="text" name="user[login]" required>
+		</p>
+		<p>
+			<label for="password">Пароль</label>
+			<input id="password" type="password" name="user[password]" required>
+		</p>
+
+		<p id="panel">
+			<input type="submit" value="Зареєструватися" name="submit">
+		</p>
+	</form>
+</div>

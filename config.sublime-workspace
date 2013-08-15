@@ -1,0 +1,185 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"h",
+				"h1	Tag"
+			],
+			[
+				"d",
+				"div	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 153.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Sites/Shop/views/index.erb",
+		"/C/Sites/Shop/views/home.erb",
+		"/C/Sites/Shop/Gemfile",
+		"/C/Sites/Shop/config.ru",
+		"/C/Sites/KR_site2/config.ru",
+		"/C/Sites/KR_site/app.rb",
+		"/C/Sites/KR_site/views/about.erb",
+		"/C/Sites/KR_site/public/css/style.css",
+		"/C/Sites/KR_site/views/layout.erb",
+		"/C/Sites/KR_site/Gemfile",
+		"/C/Sites/KR_site/views/dropbox_sign_in.erb",
+		"/C/Users/svv/Desktop/Новая папка/css/style.css",
+		"/C/Users/svv/Desktop/Untitled Document",
+		"/C/Users/svv/Desktop/Новый текстовый документ (2).txt",
+		"/C/Users/svv/Desktop/Новый текстовый документ.txt",
+		"/C/Users/svv/Desktop/Новый текстовый документ.srt",
+		"/C/Users/svv/Desktop/Новый текстовый ававадокумент.srt",
+		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/data_objects-0.10.13/lib/data_objects/connection.rb"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"butto",
+			"butt",
+			"Приходь",
+			"\n",
+			"drop",
+			"\n",
+			" \n",
+			"   ",
+			"drop"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"project": "config.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

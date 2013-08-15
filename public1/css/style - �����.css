@@ -1,0 +1,12 @@
+body{
+background: url(../images/bg-main.jpg) left top repeat-x #f7f7f7;
+position: relative;
+overflow: hidden;
+width: 100%;
+}
+h1{
+	color: #abc123;
+}
+.error{
+	color: red;
+}
