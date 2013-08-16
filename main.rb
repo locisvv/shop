@@ -3,6 +3,7 @@ require 'rubygems'
 require 'sinatra'
 require 'data_mapper' 
 require 'rack-flash'
+require 'mini_magick'
 
 enable :sessions
 use Rack::Flash 

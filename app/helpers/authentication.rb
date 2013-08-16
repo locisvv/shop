@@ -7,7 +7,7 @@ helpers  do
     end
 
     def site_admin!
-		unless session[:user].permission
+		unless session[:user] or session[:user].permission
 			flash[:error] = @@errors[:sign_in_admin]
 			redirect '/'
 		end		

@@ -17,7 +17,7 @@
 </table>
 <h2>Категорії</h2>
 <div>
-	<form method="post" action="/admin/new_group">
+	<form method="post" action="/admin/new_group" enctype="multipart/form-data">
 		<p>
 			<label for="name">Назва</label>
 			<input id="name" type="text" name="group[name]" required>
@@ -25,6 +25,9 @@
 		<p>Короткий опис<br>
 			<textarea name="group[description]" cols="40" rows="3"></textarea></p>
 		</p>
+		<p for="name">Завантажити картинку</p>
+		<input type="file" name="img" multiple>
+
 		<p id="panel">
 			<input type="submit" value="Додати групу" name="submit">
 		</p>

@@ -10,15 +10,28 @@ end
 
 post '/admin/new_group' do
 	group = Group.new(params[:group])
-
+	
+	photo_file = params[:img][:tempfile]
+	photo_name = params[:img][:filename]
+	
 	if group.valid?
 		group.save
+
+		if photo_file and photo_name
+			new_photo_name = group.id.to_s + 'g' + photo_name
+
+			upload_photo(photo_file, new_photo_name)
+
+			group.photo_name = new_photo_name
+			group.save
+		end
 	else
 		flash[:error] = @@errors[:incorrect_product]
 	end
 end
 
-post '/admin/update_group' do
+get '/admin/edit_group' do
+	erb :edit_group
 end
 
 post '/admin/new_product' do
@@ -42,4 +55,5 @@ post '/admin/new_product' do
 end
 
 post '/admin/update_product' do
+	
 end
