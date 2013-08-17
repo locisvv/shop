@@ -18,20 +18,33 @@ post '/admin/new_group' do
 		group.save
 
 		if photo_file and photo_name
-			new_photo_name = group.id.to_s + 'g' + photo_name
+			photo = Photo.new()
+			photo.group_id = group.id
+			photo.save
+
+			new_photo_name = photo.id.to_s + photo_name
+
+			photo.name = new_photo_name
 
 			upload_photo(photo_file, new_photo_name)
-
-			group.photo_name = new_photo_name
-			group.save
+			
+			photo.save
 		end
 	else
 		flash[:error] = @@errors[:incorrect_product]
 	end
 end
 
-get '/admin/edit_group' do
-	erb :edit_group
+get '/admin/group/:id' do
+	@group = Group.get(params[:id])
+	
+	
+	if @group
+		erb :edit_group
+	else
+		flash[:error] = "404" 
+	end
+		
 end
 
 post '/admin/new_product' do

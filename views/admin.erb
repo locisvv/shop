@@ -1,5 +1,21 @@
 <p>Admin</p>
+<h2>Групи</h2>
+<table cellspacing="0">
+    <tr>
+    	<th>№</th><th>Назва</th><th>Опис</th><th>Ціна</th>
+    </tr>
 
+    <% @groups.each do |item| %>
+	    <tr>
+	    	<td><%= item.id %></td>
+	    	<td><%= item.name %></td>
+	    	<td><%= item.description %></td>
+	    	<td><a href="/admin/group/<%= item.id %>">Edit</a></td>
+	    </tr>
+	<% end %>
+</table>
+
+<h2>Товари</h2>
 <table cellspacing="0">
     <tr>
     	<th>№</th><th>Назва</th><th>Група</th><th>Ціна</th>
@@ -13,7 +29,6 @@
 	    	<td><%= item.price %></td>
 	    </tr>
 	<% end %>
-
 </table>
 <h2>Категорії</h2>
 <div>

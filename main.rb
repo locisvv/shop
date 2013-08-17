@@ -12,6 +12,6 @@ Dir["./app/helpers/*.rb"].each { |file| require file }
 
 DataMapper.setup(:default, 'sqlite:db.sqlite')
 Dir["./app/models/*.rb"].each { |file| require file }
-DataMapper.auto_upgrade!
+DataMapper.auto_migrate!
 
 Dir["./app/controllers/*.rb"].each { |file| require file }

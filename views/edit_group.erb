@@ -1,0 +1,7 @@
+<p><%= @group.name %></p>
+<p><%= @group.description %></p>
+<p>
+<% @group.photo.each do |photo|%>
+<img src="/photos/<%= photo.name %>">
+<% end %>
+</p>

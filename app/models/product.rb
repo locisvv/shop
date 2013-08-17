@@ -3,10 +3,10 @@ class Product
 
   	property :id, Serial
   	property :name, String
-  	property :photo_name, String 
   	property :price, Float
   	property :description, Text
   	property :created_at, Integer, :default => Time.now.to_i
 
   	belongs_to :group
+  	has n, :photo
 end
