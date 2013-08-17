@@ -11,33 +11,24 @@ end
 post '/admin/new_group' do
 	group = Group.new(params[:group])
 	
-	photo_file = params[:img][:tempfile]
-	photo_name = params[:img][:filename]
-	
 	if group.valid?
 		group.save
 
-		if photo_file and photo_name
-			photo = Photo.new()
-			photo.group_id = group.id
+		if params[:img]
+			photo = Photo.new(group_id: group.id)
 			photo.save
 
-			new_photo_name = photo.id.to_s + photo_name
-
-			photo.name = new_photo_name
-
-			upload_photo(photo_file, new_photo_name)
-			
-			photo.save
+			upload_photo(params[:img], photo)
 		end
 	else
-		flash[:error] = @@errors[:incorrect_product]
+		flash[:error] = @@errors[:incorrect_value]
 	end
+
+	redirect back
 end
 
 get '/admin/group/:id' do
 	@group = Group.get(params[:id])
-	
 	
 	if @group
 		erb :edit_group
@@ -47,14 +38,36 @@ get '/admin/group/:id' do
 		
 end
 
+post '/admin/group_edit' do
+	group = Group.get(params[:id])
+
+	name = params[:name]
+	description = params[:description]
+	
+	if group and name and description
+		group.update(name: name, description: description)
+
+		if params[:img]
+			photo = Photo.new(group_id: group.id)
+			photo.save
+
+			upload_photo(params[:img], photo)
+		end	
+	else
+		flash[:error] = @@errors[:incorrect_value]
+	end
+
+	redirect back
+end	
+
 post '/admin/new_product' do
-	group = Group.first(:name => params[:product][:group_name])
+	group = Group.first(:name => params[:group_name])
 
 	if group
 		product = Product.new(
-			:name => params[:product][:name],
-			:price => params[:product][:price],
-			:description => params[:product][:description],
+			:name => params[:name],
+			:price => params[:price],
+			:description => params[:description],
 			:group_id => group.id
 		)
 		if product.valid?
@@ -65,6 +78,8 @@ post '/admin/new_product' do
 	else
 		flash[:error] = @@errors[:incorrect_product]
 	end
+
+	redirect back
 end
 
 post '/admin/update_product' do

@@ -43,9 +43,7 @@
 		<p for="name">Завантажити картинку</p>
 		<input type="file" name="img" multiple>
 
-		<p id="panel">
-			<input type="submit" value="Додати групу" name="submit">
-		</p>
+		<input type="submit" value="Додати групу" name="submit">
 	</form>
 </div>
 <h2>Продукти</h2>
@@ -53,11 +51,11 @@
 	<form method="post" action="/admin/new_product">
 		<p>
 			<label for="name">Назва товару</label>
-			<input id="name" type="text" name="product[name]" required>
+			<input id="name" type="text" name="name" required>
 		</p>
 
 		<% if @groups %>
-			<select name="product[group_name]">
+			<select name="group_name">
 				<% @groups.each do |item| %>
 					<option><%= item.name %></option>
 				<% end %>	
@@ -66,13 +64,13 @@
 
 		<p>
 			<label for="price">Ціна</label>
-			<input id="price" type="text" name="product[price]" required>
+			<input id="price" type="text" name="price" required>
 		</p>
 		<p>Короткий опис<br>
-			<textarea name="product[description]" cols="40" rows="3"></textarea></p>
+			<textarea name="description" cols="40" rows="3"></textarea></p>
 		</p>
-		<p id="panel">
-			<input type="submit" value="Створити" name="submit">
-		</p>
+		<p for="name">Завантажити картинку</p>
+		<input type="file" name="img" multiple>
+		<input type="submit" value="Створити" name="submit">
 	</form>
 </div>

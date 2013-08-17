@@ -1,7 +1,24 @@
-<p><%= @group.name %></p>
-<p><%= @group.description %></p>
+<div>
+	<form method="post" action="/admin/group_edit" enctype="multipart/form-data">
+		<p>
+			<label for="name">Назва</label>
+			<input id="name" type="text" name="name" required value="<%= @group.name %>">
+		</p>
+		
+		<p>Короткий опис</p>
+		<textarea name="description" cols="40" rows="10">
+			<%= @group.description %>
+		</textarea>
+		
+		<p for="name">Додати ще одну картинку</p>
+		<input type="file" name="img">
+		<input name="id" type="hidden" value="<%=@group.id%>">
+		<input type="submit" value="Зберегти" name="submit">
+	</form>
+</div>
+
 <p>
-<% @group.photo.each do |photo|%>
-<img src="/photos/<%= photo.name %>">
-<% end %>
+	<% @group.photo.each do |photo|%>
+		<img src="/photos/<%= photo.name %>">
+	<% end %>
 </p>
