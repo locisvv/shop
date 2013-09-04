@@ -28,17 +28,15 @@ post '/admin/new_group' do
 end
 
 get '/admin/group/:id' do
-	@group = Group.get(params[:id])
-	
+	@group = Group.get(params[:id])	
 	if @group
 		erb :edit_group
 	else
 		flash[:error] = "404" 
-	end
-		
+	end	
 end
 
-post '/admin/group_edit' do
+post '/admin/edit_group' do
 	group = Group.get(params[:id])
 
 	name = params[:name]
@@ -82,6 +80,36 @@ post '/admin/new_product' do
 	redirect back
 end
 
-post '/admin/update_product' do
-	
+get '/admin/product/:id' do
+	@product = Product.get(params[:id])	
+	@groups = Group.all
+	if @product
+		erb :edit_product
+	else
+		flash[:error] = "404" 
+	end	
+end
+
+post '/admin/edit_product' do
+	product = Product.get(params[:id])
+
+	group = Group.first(:name => params[:group_name])
+
+	if product and group and params[:name] and params[:description] and params[:price]
+		product.update(name: 		params[:name],
+					   description: params[:description],
+					   price: 		params[:price],
+					   group_id: 	group.id)
+
+		if params[:img]
+			photo = Photo.new(group_id: group.id)
+			photo.save
+
+			upload_photo(params[:img], photo)
+		end	
+	else
+		flash[:error] = @@errors[:incorrect_value]
+	end
+
+	redirect back
 end

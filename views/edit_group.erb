@@ -1,24 +1,15 @@
-<div>
-	<form method="post" action="/admin/group_edit" enctype="multipart/form-data">
-		<p>
-			<label for="name">Назва</label>
-			<input id="name" type="text" name="name" required value="<%= @group.name %>">
-		</p>
-		
-		<p>Короткий опис</p>
-		<textarea name="description" cols="40" rows="10">
-			<%= @group.description %>
-		</textarea>
-		
-		<p for="name">Додати ще одну картинку</p>
-		<input type="file" name="img">
+<div class="w-container">
+	<h3>Редагувати</h3>
+	<form method="post" action="/admin/edit_group" enctype="multipart/form-data" name="wf-form-group-form" data-name="Group Form">
+		<input name="name" class="w-input" type="text" placeholder="Введіть назву групи" value="<%= @group.name %>"></input>
+		<textarea name="description" class="w-input" placeholder="Короткий опис групи"><%= @group.description %></textarea>
+		<input type="file" name="img" class="w-input" placeholder="Завантажити картинку" multiple></input>
 		<input name="id" type="hidden" value="<%=@group.id%>">
-		<input type="submit" value="Зберегти" name="submit">
+		<input class="w-button add_button" type="submit" value="Додати" data-wait="Please wait..."></input>
 	</form>
+	<p>
+		<% @group.photo.each do |photo|%>
+			<img src="/photos/<%= photo.name %>">
+		<% end %>
+	</p>
 </div>
-
-<p>
-	<% @group.photo.each do |photo|%>
-		<img src="/photos/<%= photo.name %>">
-	<% end %>
-</p>
