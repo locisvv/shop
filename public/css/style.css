@@ -7,3 +7,13 @@ h1{
 .notice{
 	color: blue;
 }
+table{
+	border: solid #ccc 1px;
+	width: 100%;
+}
+td, th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 5px;
+    text-align: left;    
+}

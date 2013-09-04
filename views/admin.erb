@@ -1,76 +1,63 @@
-<p>Admin</p>
-<h2>Групи</h2>
-<table cellspacing="0">
-    <tr>
-    	<th>№</th><th>Назва</th><th>Опис</th><th>Ціна</th>
-    </tr>
+<div class="w-container">
+      <div class="w-row">
+        <div class="w-col w-col-6">
+          <h3>Додати групу продуктів</h3>
+          <form method="post" action="/admin/new_group" enctype="multipart/form-data" name="wf-form-group-form" data-name="Group Form">
+            <input name="group[name]" class="w-input" type="text" placeholder="Введіть назву групи"></input>
+            <textarea name="group[description]" class="w-input" placeholder="Короткий опис групи"></textarea>
+            <input type="file" name="img" class="w-input" placeholder="Завантажити картинку" multiple></input>
+            <input class="w-button add_button" type="submit" value="Додати" data-wait="Please wait..."></input>
+          </form>
+        </div>
+        
+        <div class="w-col w-col-6">
+          <h3>Додати продукт</h3>
+          <form method="post" action="/admin/new_product" enctype="multipart/form-data" name="wf-form-group-form" data-name="Group Form">
+            <input class="w-input" type="text" name="name" placeholder="Введіть назву продукту"></input>
+            <input class="w-input" type="text" name="price" placeholder="Введіть ціну" name="field" required="required"></input>
+			<% if @groups %>
+				<select class="w-input" name="group_name">
+					<% @groups.each do |item| %>
+						<option><%= item.name %></option>
+					<% end %>	
+				</select>
+			<% end %>
+            <textarea class="w-input" name="description" placeholder="Короткий опис продукту"></textarea>
+            <input class="w-button add_button" type="submit" value="Додати" data-wait="Please wait..."></input>
+          </form>
+        </div>
+      </div>
+      <h3>Групи товарів</h3>
+      <table cellspacing="0">
+		    <tr>
+		    	<th>№</th><th>Назва</th><th>Опис</th><th>Редагувати</th>
+		    </tr>
 
-    <% @groups.each do |item| %>
-	    <tr>
-	    	<td><%= item.id %></td>
-	    	<td><%= item.name %></td>
-	    	<td><%= item.description %></td>
-	    	<td><a href="/admin/group/<%= item.id %>">Edit</a></td>
-	    </tr>
-	<% end %>
-</table>
+		    <% @groups.each do |item| %>
+			    <tr>
+			    	<td><%= item.id %></td>
+			    	<td><%= item.name %></td>
+			    	<td><%= item.description %></td>
+			    	<td><a href="/admin/group/<%= item.id %>">Edit</a></td>
+			    </tr>
+			<% end %>
+	  </table>
+      <h3>Продукти</h3>
+      <table cellspacing="0">
+		    <tr>
+		    	<th>№</th><th>Назва</th><th>Група</th><th>Опис</th><th>Ціна</th><th>Редагувати</th><th>Видалити</th>
+		    </tr>
 
-<h2>Товари</h2>
-<table cellspacing="0">
-    <tr>
-    	<th>№</th><th>Назва</th><th>Група</th><th>Ціна</th>
-    </tr>
-
-    <% @products.each do |item| %>
-	    <tr>
-	    	<td><%= item.id %></td>
-	    	<td><%= item.name %></td>
-	    	<td><%= item.group.name %></td>
-	    	<td><%= item.price %></td>
-	    </tr>
-	<% end %>
-</table>
-<h2>Категорії</h2>
-<div>
-	<form method="post" action="/admin/new_group" enctype="multipart/form-data">
-		<p>
-			<label for="name">Назва</label>
-			<input id="name" type="text" name="group[name]" required>
-		</p>
-		<p>Короткий опис<br>
-			<textarea name="group[description]" cols="40" rows="3"></textarea></p>
-		</p>
-		<p for="name">Завантажити картинку</p>
-		<input type="file" name="img" multiple>
-
-		<input type="submit" value="Додати групу" name="submit">
-	</form>
-</div>
-<h2>Продукти</h2>
-<div>
-	<form method="post" action="/admin/new_product">
-		<p>
-			<label for="name">Назва товару</label>
-			<input id="name" type="text" name="name" required>
-		</p>
-
-		<% if @groups %>
-			<select name="group_name">
-				<% @groups.each do |item| %>
-					<option><%= item.name %></option>
-				<% end %>	
-			</select>
-		<% end %>
-
-		<p>
-			<label for="price">Ціна</label>
-			<input id="price" type="text" name="price" required>
-		</p>
-		<p>Короткий опис<br>
-			<textarea name="description" cols="40" rows="3"></textarea></p>
-		</p>
-		<p for="name">Завантажити картинку</p>
-		<input type="file" name="img" multiple>
-		<input type="submit" value="Створити" name="submit">
-	</form>
-</div>
+		    <% @products.each do |item| %>
+			    <tr>
+			    	<td><%= item.id %></td>
+			    	<td><%= item.name %></td>
+			    	<td><%= item.group.name %></td>
+			    	<td><%= item.description %></td>
+			    	<td><%= item.price %></td>
+			    	<td><a href="#">Змінити</a></td>
+			    	<td><a href="#">Видалити</a></td>
+			    </tr>
+			<% end %>
+		</table>
+    </div>
