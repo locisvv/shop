@@ -1,8 +1,8 @@
 <div class="w-container">
 <h3>Редагувати</h3>
   <form method="post" action="/admin/edit_product" enctype="multipart/form-data" name="wf-form-group-form" data-name="Group Form">
-    <input class="w-input" type="text" name="name" placeholder="Введіть назву продукту" value="<%= @product.name %>"></input>
-    <input class="w-input" type="text" name="price" placeholder="Введіть ціну" name="field" value="<%= @product.price %>" required="required"></input>
+    <input class="w-input" type="text" name="name" placeholder="Введіть назву продукту" required value="<%= @product.name %>"></input>
+    <input class="w-input" type="text" name="price" placeholder="Введіть ціну" name="field" required value="<%= @product.price %>" required="required"></input>
 	<% if @groups %>
 		<select class="w-input" name="group_name">
 			<% @groups.each do |item| %>
@@ -10,7 +10,7 @@
 			<% end %>	
 		</select>
 	<% end %>
-    <textarea class="w-input" name="description" placeholder="Короткий опис продукту"><%= @product.description %></textarea>
+    <textarea class="w-input" name="description" rows="5" placeholder="Короткий опис продукту"><%= @product.description %></textarea>
     <input name="id" type="hidden" value="<%=@product.id%>">
     <input class="w-button add_button" type="submit" value="Змінити" data-wait="Please wait..."></input>
   </form>

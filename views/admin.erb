@@ -3,8 +3,8 @@
         <div class="w-col w-col-6">
           <h3>Додати групу продуктів</h3>
           <form method="post" action="/admin/new_group" enctype="multipart/form-data" name="wf-form-group-form" data-name="Group Form">
-            <input name="group[name]" class="w-input" type="text" placeholder="Введіть назву групи"></input>
-            <textarea name="group[description]" class="w-input" placeholder="Короткий опис групи"></textarea>
+            <input name="group[name]" class="w-input" type="text" placeholder="Введіть назву групи" required></input>
+            <textarea name="group[description]" class="w-input" rows="8" placeholder="Короткий опис групи"></textarea>
             <input type="file" name="img" class="w-input" placeholder="Завантажити картинку" multiple></input>
             <input class="w-button add_button" type="submit" value="Додати" data-wait="Please wait..."></input>
           </form>
@@ -13,8 +13,8 @@
         <div class="w-col w-col-6">
           <h3>Додати продукт</h3>
           <form method="post" action="/admin/new_product" enctype="multipart/form-data" name="wf-form-group-form" data-name="Group Form">
-            <input class="w-input" type="text" name="name" placeholder="Введіть назву продукту"></input>
-            <input class="w-input" type="text" name="price" placeholder="Введіть ціну" name="field" required="required"></input>
+            <input class="w-input" type="text" name="name" placeholder="Введіть назву продукту" required></input>
+            <input class="w-input" type="text" name="price" placeholder="Введіть ціну" name="field" required></input>
 			<% if @groups %>
 				<select class="w-input" name="group_name">
 					<% @groups.each do |item| %>
@@ -22,7 +22,7 @@
 					<% end %>	
 				</select>
 			<% end %>
-            <textarea class="w-input" name="description" placeholder="Короткий опис продукту"></textarea>
+            <textarea class="w-input" name="description" rows="6" placeholder="Короткий опис продукту"></textarea>
             <input class="w-button add_button" type="submit" value="Додати" data-wait="Please wait..."></input>
           </form>
         </div>
@@ -30,7 +30,7 @@
       <h3>Групи товарів</h3>
       <table cellspacing="0">
 		    <tr>
-		    	<th>№</th><th>Назва</th><th>Опис</th><th>Редагувати</th>
+		    	<th>id</th><th>Назва</th><th>Опис</th><th>Дата</th><th>Редагувати</th><th>Видалити</th>
 		    </tr>
 
 		    <% @groups.each do |item| %>
@@ -38,14 +38,16 @@
 			    	<td><%= item.id %></td>
 			    	<td><%= item.name %></td>
 			    	<td><%= item.description %></td>
-			    	<td><a href="/admin/group/<%= item.id %>">Edit</a></td>
+			    	<td><%= Time.at(item.created_at).strftime("%k:%M %d-%m-%Y")%></td>
+			    	<td><a href="/admin/group/<%= item.id %>">Редагувати</a></td>
+			    	<td><a href="/admin/delete_group/<%= item.id %>">Видалити</a></td>
 			    </tr>
 			<% end %>
 	  </table>
       <h3>Продукти</h3>
       <table cellspacing="0">
 		    <tr>
-		    	<th>№</th><th>Назва</th><th>Група</th><th>Опис</th><th>Ціна</th><th>Редагувати</th><th>Видалити</th>
+		    	<th>id</th><th>Назва</th><th>Група</th><th>Опис</th><th>Ціна</th><th>Дата</th><th>Редагувати</th><th>Видалити</th>
 		    </tr>
 
 		    <% @products.each do |item| %>
@@ -55,8 +57,9 @@
 			    	<td><%= item.group.name %></td>
 			    	<td><%= item.description %></td>
 			    	<td><%= item.price %></td>
-			    	<td><a href="/admin/product/<%= item.id %>">Змінити</a></td>
-			    	<td><a href="#">Видалити</a></td>
+			    	<td><%= Time.at(item.created_at).strftime("%k:%M %d-%m-%Y")%></td>
+			    	<td><a href="/admin/product/<%= item.id %>">Редагувати</a></td>
+			    	<td><a href="/admin/delete_product/<%= item.id %>">Видалити</a></td>
 			    </tr>
 			<% end %>
 		</table>

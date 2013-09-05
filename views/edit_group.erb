@@ -1,11 +1,11 @@
 <div class="w-container">
 	<h3>Редагувати</h3>
 	<form method="post" action="/admin/edit_group" enctype="multipart/form-data" name="wf-form-group-form" data-name="Group Form">
-		<input name="name" class="w-input" type="text" placeholder="Введіть назву групи" value="<%= @group.name %>"></input>
-		<textarea name="description" class="w-input" placeholder="Короткий опис групи"><%= @group.description %></textarea>
+		<input name="name" class="w-input" type="text" placeholder="Введіть назву групи" required value="<%= @group.name %>"></input>
+		<textarea name="description" class="w-input" rows="5" placeholder="Короткий опис групи"><%= @group.description %></textarea>
 		<input type="file" name="img" class="w-input" placeholder="Завантажити картинку" multiple></input>
 		<input name="id" type="hidden" value="<%=@group.id%>">
-		<input class="w-button add_button" type="submit" value="Додати" data-wait="Please wait..."></input>
+		<input class="w-button add_button" type="submit" value="Зберегти" data-wait="Please wait..."></input>
 	</form>
 	<p>
 		<% @group.photo.each do |photo|%>

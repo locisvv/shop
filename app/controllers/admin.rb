@@ -113,3 +113,25 @@ post '/admin/edit_product' do
 
 	redirect back
 end
+
+get '/admin/delete_product/:id' do
+	product = Product.get(params[:id])
+	if product
+		product.destroy
+		redirect back
+	else
+		flash[:error] = @@errors[:empty_product]	
+	end
+end
+
+get '/admin/delete_group/:id' do
+	group = Group.get(params[:id])
+	if group
+		group.product.destroy
+		group.destroy
+
+		redirect back
+	else
+		flash[:error] = @@errors[:empty_product]	
+	end
+end
