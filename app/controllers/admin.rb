@@ -102,7 +102,7 @@ post '/admin/edit_product' do
 					   group_id: 	group.id)
 
 		if params[:img]
-			photo = Photo.new(group_id: group.id)
+			photo = Photo.new(product_id: product.id)
 			photo.save
 
 			upload_photo(params[:img], photo)

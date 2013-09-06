@@ -11,6 +11,7 @@
 		</select>
 	<% end %>
     <textarea class="w-input" name="description" rows="5" placeholder="Короткий опис продукту"><%= @product.description %></textarea>
+    <input type="file" name="img" class="w-input" placeholder="Завантажити картинку" multiple></input>
     <input name="id" type="hidden" value="<%=@product.id%>">
     <input class="w-button add_button" type="submit" value="Змінити" data-wait="Please wait..."></input>
   </form>
