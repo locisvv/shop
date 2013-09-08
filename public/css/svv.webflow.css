@@ -54,3 +54,34 @@ p {
 .add_button {
   border-radius: 5px;
 }
+.group_img {
+  height: 200px;
+  background-image: url(../images/nena-pasadena-1056-305911-1-product.jpg);
+  background-size: auto 400px;
+}
+.group_title {
+  margin-top: 30px;
+}
+.product {
+  display: block;
+  width: 220px;
+  height: 300px;
+  margin: 10px auto;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  float: none;
+  background-color: #e8e8e8;
+}
+.product_img {
+  display: block;
+  width: auto;
+  height: 200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (max-width: 991px) {
+  .product {
+    width: 180px;
+  }
+}

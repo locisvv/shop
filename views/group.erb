@@ -1,0 +1,28 @@
+<div class="w-container">
+    <div class="w-row">
+      <div class="w-col w-col-4">
+        <div class="group_img"></div>
+      </div>
+      <div class="w-col w-col-8">
+        <h2 class="group_title"><%= @group.name %></h2>
+        <p><%= @group.description %></p>
+      </div>
+    </div>
+
+    <% i = 0; size = @product.size %>
+    <% while i < size %>
+      <div class="w-row">
+        <% step = i + 4%>
+        <% while i < step and i < size %>
+          <div class="w-col w-col-3 w-col-small-6">
+            <div class="product">
+              <img class="product_img" src="/photos/<%= @product.photo.name %>" alt="<%= @product.photo.name %>">
+              <h4><%= @product[i].name %></h4>
+              <div><strong>Виробник</strong>: <%= @product[i].name %></div>
+              <div><strong>Ціна</strong>: <%= @product[i].price %> грн</div>
+            </div>
+          </div>
+        <% i += 1; end %>
+      </div>
+    <% end %>
+  </div>
